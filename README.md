@@ -1,64 +1,55 @@
-# Browser File Downloader
+# Number Formatter JS
 
-A simple JavaScript module for download file from a Blob in the Browser-side.
+A simple JavaScript module for number formatter in Brazil pattern
 
 ## Installing
 
 NPM:
 
 ```bash
-npm install @perseu/browser-file-downloader
+npm install @perseu/number-formatter-js
 ```
 
 Yarn:
 
 ```bash
-yarn add @perseu/browser-file-downloader
+yarn add @perseu/number-formatter-js
 ```
 
 ## Example
 
 ```js
-import FileDownloader from '@perseu/browser-file-downloader'
+import NumberFormatter from '@perseu/number-formatter-js'
 
-await FileDownloader.downloadFileAsPdf(blob, fileName)
+NumberFormatter.decimalFmt(3.4) // 3,4
+NumberFormatter.decimalTwoFixedFmt(3.4) // 3,40
+NumberFormatter.currencyBRLFmt(3.4) // R$ 3,40
 ```
 
 ## API
 
 ### Methods
 
-**downloadFileAsPdf(data, fileName)**
+**decimalFmt(number)**
 
-- `data: File|ArrayBuffer|Blob` the data object to be downloaded.
-- `fileName: ?String` the name of the file that will be downloaded. The file extension type should to be explicit (e.g. `Download.pdf`). The default value is `Download`.
-- `returns: Promise<void>`
+- `number: number|string` the number to be formatted
+- `returns: string`
 
-  This method will download the `data` as a PDF file.
+  This method will replace `.` with `,` for decimal values
 
-**downloadFileAs(data, type, fileName)**
+**decimalTwoFixedFmt(number)**
 
-- `data: File|ArrayBuffer|Blob` the data object to be downloaded.
-- `type: ?String` the MIME type of the file. The default value is `text/plain`.
-- `fileName: ?String` the name of the file that will be downloaded. The file extension type should to be explicit (e.g. `Download.pdf`). The default value is `Download`.
-- `returns: Promise<void>`
+- `number: number|string` the number to be formatted
+- `returns: string`
 
-  This method will download the `data` as specified in `type` parameter.
+  This method will replace `.` with `,` and will fix two decimal numbers after decimal separator
 
-**downloadFile(blob, fileName)**
+**currencyBRLFmt(number)**
 
-- `blob: Blob` the blob object to be downloaded.
-- `fileName: String` the name of the file that will be downloaded. The file extension type should to be explicit (e.g. `Download.pdf`).
-- `returns: void`
+- `number: number|string` the number to be formatted
+- `returns: string`
 
-  This method will download the `blob` as a file. The file type should be informed on the Blob object.
-
-**base64ToArrayBuffer(base64)**
-
-- `base64: String` the base64 string to be converted.
-- `returns: ArrayBuffer`
-
-  This method will convert the `base64` string to a `ArrayBuffer` object.
+  This method will replace transform a decimal (number) value to a String BRL currency. It utilizes `Intl`.
 
 ## License
 
