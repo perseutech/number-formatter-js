@@ -23,6 +23,7 @@ import NumberFormatter from '@perseu/number-formatter-js'
 
 NumberFormatter.decimalFmt(3.4) // 3,4
 NumberFormatter.decimalTwoFixedFmt(3.4) // 3,40
+NumberFormatter.decimalNFixedFmt(1.5, 4) // 1,5000
 NumberFormatter.currencyBRLFmt(3.4) // R$ 3,40
 ```
 
@@ -43,6 +44,14 @@ NumberFormatter.currencyBRLFmt(3.4) // R$ 3,40
 - `returns: string`
 
   This method will replace `.` with `,` and will fix two decimal numbers after decimal separator
+
+**decimalNFixedFmt(number, decimals)**
+
+- `number: number|string` the number to be formatted
+- `decimals: number` the quantity of numbers after decimal separator
+- `returns: string`
+
+  This method will replace `.` with `,` and will fix two n numbers after decimal separator
 
 **currencyBRLFmt(number)**
 
